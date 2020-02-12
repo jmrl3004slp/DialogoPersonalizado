@@ -1,0 +1,23 @@
+package com.itslp.desarrolloaplicacionesmoviles;
+
+import android.os.Bundle;
+
+public class MainActivity extends DialogFragment {
+
+    @NonNull
+    @Override
+    protected Dialog onCreateDialog(@Nullable Bundle savedInstanceState) {
+        AlertDialog.Builder builder new AlertDialog.Builder(getActivity());
+        LayoutInflater inflater = getActivy().getLayoutInflater();
+
+        //Inflar y establecer el layout para el dialogo
+        builder.setView(inflater.inflate(R.layout.dialog_login, null))
+            .setPositiveButton(android.R.string.yes,  new DialogInterface.OnClickListener(){
+                @Override
+                public void onClick(DialogInterface dialogInterface){
+                    TextView tv = getActivity().findViewById(R.id.txtSaludo);
+                }
+            });
+        return super.onCreateDialog(savedInstanceState);
+    }
+}
