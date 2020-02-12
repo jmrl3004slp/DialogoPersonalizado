@@ -4,6 +4,7 @@ import android.app.Dialog;
 import android.content.DialogInterface;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -25,12 +26,22 @@ public class DialogoAcceso extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         TextView tv = getActivity().findViewById(R.id.txtSaludo);
+                        EditText etnombre = getActivity().findViewById(R.id.etNombre);
+                        EditText etPassword = getActivity().findViewById(R.id.etPassword);
+
+                        String password = etPassword.getText().toString();
+                        if (password.equals("Jmrl3004")) {
+
+                        }
+
+                        tv.setText("======= Hola:  " + etnombre.getText());
                     }
                 })
+
                 .setNegativeButton(android.R.string.cancel, new DialogInterface.OnClickListener() {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
-
+                        getActivity().finish();
                     }
                 });
 
