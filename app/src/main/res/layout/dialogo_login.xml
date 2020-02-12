@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="64dp"
+        android:background="#3F51B5"
+        android:ems="10"
+        android:gravity="center"
+        android:hint="Usuario"
+        android:inputType="textPersonName"
+        android:text="Acceso al Sistema"
+        android:textAllCaps="false"
+        android:textColor="#FFFFFF"
+        android:textSize="35sp" />
+
+    <EditText
+        android:id="@+id/etNombre"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:inputType="textPersonName"
+        android:text="Usuario" />
+
+    <EditText
+        android:id="@+id/etPassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword" />
+
+    <CheckBox
+        android:id="@+id/checkBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Recordarme" />
+</LinearLayout>
+    <!--Agregar un LinearLayout en vertical
+    agregar un textView con los atributos textSize 35sp
+    gravity center
+    layout height 64dp
+    background azul marino
+    textColor #FFFFFF
+    text Acceso al Sistema
+
+    agregar dos editText (uno llamado etnombre y otro etPassword) tambien agregar un checkbox.
+
+    hint Usuario
+
+
+    -->
