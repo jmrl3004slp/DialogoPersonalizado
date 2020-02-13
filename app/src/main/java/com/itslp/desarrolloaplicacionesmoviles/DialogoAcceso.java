@@ -2,6 +2,7 @@ package com.itslp.desarrolloaplicacionesmoviles;
 
 import android.app.Dialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -13,6 +14,14 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class DialogoAcceso extends DialogFragment {
+
+    public DialogoAcceso newInstance(int title) {
+        DialogoAcceso frag = new DialogoAcceso();
+        Bundle args = new Bundle();
+        args.putInt("title", title);
+        frag.setArguments(args);
+        return frag;
+    }
 
     @NonNull
     @Override
@@ -30,11 +39,26 @@ public class DialogoAcceso extends DialogFragment {
                         EditText etPassword = getActivity().findViewById(R.id.etPassword);
 
                         String password = etPassword.getText().toString();
-                        if (password.equals("Jmrl3004")) {
-
+                        if (password.equals("3004")) {
+                            tv.setText("======= Hola:  " + etnombre.getText());
                         }
+                        else {
+                            //Toast.makeText(getContext(), "Error: PASSWORD INCORRECTO", Toast.LENGTH_LONG);
+                            final AlertDialog.Builder builder1 = new AlertDialog.Builder(getActivity());
+                            builder1.setTitle("AVISO");
+                            builder1.setMessage("El password es incorrecto");
+                            builder1.setCancelable(false);
+                            builder1.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+                                @Override
+                                public void onClick(DialogInterface dialogInterface, int i) {
+                                    //new DialogoAcceso().show(getFragmentManager(), "DialogoAcceso");
+                                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                                }
+                            });
 
-                        tv.setText("======= Hola:  " + etnombre.getText());
+                            AlertDialog alertDialog = builder1.create();
+                            alertDialog.show();
+                        }
                     }
                 })
 
@@ -45,6 +69,6 @@ public class DialogoAcceso extends DialogFragment {
                     }
                 });
 
-        return builder.show();
+        return builder.create();
     }
 }

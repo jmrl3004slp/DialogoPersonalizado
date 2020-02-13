@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Dialogo Personalizado</string>
+    <string name="alert_dialog">Login</string>
 </resources>
