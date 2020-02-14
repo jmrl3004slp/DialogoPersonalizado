@@ -1,8 +1,8 @@
 package com.itslp.desarrolloaplicacionesmoviles;
 
 import android.app.Dialog;
+import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.widget.EditText;
@@ -14,13 +14,9 @@ import androidx.appcompat.app.AlertDialog;
 import androidx.fragment.app.DialogFragment;
 
 public class DialogoAcceso extends DialogFragment {
-
-    public DialogoAcceso newInstance(int title) {
-        DialogoAcceso frag = new DialogoAcceso();
-        Bundle args = new Bundle();
-        args.putInt("title", title);
-        frag.setArguments(args);
-        return frag;
+    OnSimpleDialogListener listener;
+    public interface OnSimpleDialogListener {
+        void clickBotonOK();
     }
 
     @NonNull
@@ -35,8 +31,8 @@ public class DialogoAcceso extends DialogFragment {
                     @Override
                     public void onClick(DialogInterface dialogInterface, int i) {
                         TextView tv = getActivity().findViewById(R.id.txtSaludo);
-                        EditText etnombre = getActivity().findViewById(R.id.etNombre);
-                        EditText etPassword = getActivity().findViewById(R.id.etPassword);
+                        EditText etnombre = getDialog().findViewById(R.id.etNombre);
+                        EditText etPassword = getDialog().findViewById(R.id.etPassword);
 
                         String password = etPassword.getText().toString();
                         if (password.equals("3004")) {
@@ -51,8 +47,7 @@ public class DialogoAcceso extends DialogFragment {
                             builder1.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
                                 @Override
                                 public void onClick(DialogInterface dialogInterface, int i) {
-                                    //new DialogoAcceso().show(getFragmentManager(), "DialogoAcceso");
-                                    Intent intent = new Intent(getActivity(), MainActivity.class);
+                                    listener.clickBotonOK();
                                 }
                             });
 
@@ -70,5 +65,12 @@ public class DialogoAcceso extends DialogFragment {
                 });
 
         return builder.create();
+    }
+
+    @Override
+    public void onAttach(Context context) {
+        super.onAttach(context);
+
+        listener = (OnSimpleDialogListener) context;
     }
 }
